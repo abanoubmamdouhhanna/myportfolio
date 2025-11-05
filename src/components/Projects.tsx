@@ -1,4 +1,5 @@
 import { ArrowRight, Code, Layers, Database, Globe, Calendar, MessageSquare } from "lucide-react";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 interface Project {
   title: string;
@@ -12,43 +13,50 @@ interface Project {
   image: string | null;
   additionalImage?: string;
   anotherImage?: string;
-
+  fourthImage?: string;
 }
 
 const Projects = () => {
   const projects: Project[] = [
     {
-      title: "Ecommerce App - Backend API",
-      date: "2023",
-      problem: "Built a scalable backend for an eCommerce platform that needed to handle user authentication, product management, and order processing with robust security measures.",
-      solution: "Developed using Node.js, Express.js, and MongoDB with comprehensive features including user authentication, product management, and order processing systems.",
-      result: "Successfully created a fully functional eCommerce backend with secure authentication, efficient product catalog management, and streamlined order processing.",
-      tech: ["Node.js", "Express.js", "MongoDB", "RESTful API", "Authentication"],
-      gradient: "from-blue-500 to-cyan-500",
+      title: "Crunchy Fried Chicken Restaurant Platform",
+      date: "Sep 2025 - Nov 2025",
+      problem: "A growing fried chicken restaurant chain in North Carolina needed a comprehensive web platform to handle online ordering across multiple branches, manage operations for 28+ locations, and process secure payments via Stripe and PayPal.",
+      solution: "Developed a full-stack Node.js platform featuring a customer-facing restaurant website with menu browsing and cart checkout, individual branch dashboards for order management, a master admin panel for monitoring all locations, and integrated Stripe & PayPal payment gateways with role-based authentication (Admin/Manager/Customer).",
+      result: "Successfully launched a scalable multi-branch restaurant platform enabling seamless online ordering, real-time order tracking, secure payment processing, and comprehensive analytics across all locations with branch-specific management capabilities.",
+      tech: ["Node.js", "Express.js", "MongoDB", "JWT", "Stripe API", "PayPal SDK", "React.js", "Role-based Access"],
+      gradient: "from-red-500 to-orange-500",
       icon: Globe,
-      image: null
+      image: "/lovable-uploads/cfc-logo.png",
+      additionalImage: "/lovable-uploads/cfc-menu.png",
+      anotherImage: "/lovable-uploads/cfc-dashboard.png",
+      fourthImage: "/lovable-uploads/cfc-orders-management.png"
     },
     {
-      title: "Chat App Backend API",
-      date: "Jan 2025",
-      problem: "Needed to build a WhatsApp-like real-time messaging system that could handle single chats, group chats, and channels with file sharing capabilities and instant notifications.",
-      solution: "Built using Node.js and Socket.io for real-time messaging with MongoDB for scalable data storage. Implemented secure JWT authentication, file upload with Multer, and efficient Socket.io rooms for group management.",
-      result: "Created a comprehensive real-time messaging backend with single chat, group chat, and channel features, supporting file sharing, message editing/deletion, and instant notifications with read receipts.",
-      tech: ["Node.js", "Express.js", "MongoDB", "Socket.io", "JWT", "Multer"],
-      gradient: "from-green-500 to-emerald-500",
-      icon: MessageSquare,
-      image: null
+      title: "Noorex Ecommerce App Backend",
+      date: "Jul - Sep 2025",
+      problem: "Noorex needed a comprehensive ecommerce backend solution to handle product management, user authentication, order processing, and inventory management for their online retail platform.",
+      solution: "Developed using Node.js, Express.js, and MongoDB to create a scalable ecommerce backend with secure user authentication, efficient product catalog management, order processing workflows, and inventory tracking systems.",
+      result: "Successfully delivered a robust ecommerce backend that enables seamless online shopping experiences with secure transactions, real-time inventory updates, and comprehensive order management capabilities.",
+      tech: ["Node.js", "Express.js", "MongoDB", "RESTful API", "Authentication"],
+      gradient: "from-indigo-500 to-purple-500",
+      icon: Globe,
+      image: "/lovable-uploads/a938314a-5817-4c7e-a0f7-14efbc9c8af5.png",
+      additionalImage: "/lovable-uploads/8f84dfff-8b71-4d8f-ada8-a419bd53e149.png",
+      anotherImage: "/lovable-uploads/clientsNoorex.png"
     },
     {
-      title: "RiedBerg Residential App Backend",
-      date: "Feb 2025",
-      problem: "A residential compound needed a comprehensive management system for admin, worker, and user interfaces with social networking and maintenance reporting.",
-      solution: "Created a backend for a residential management app with admin, worker, and user interfaces, integrating social networking and maintenance reporting capabilities.",
-      result: "Built a scalable and efficient residential management system that streamlines compound operations and enhances resident communication.",
-      tech: ["Node.js", "Express.js", "MongoDB", "Multi-role System", "Social Features"],
-      gradient: "from-orange-500 to-red-500",
-      icon: Code,
-      image: null
+      title: "Powerline Gas API Backend",
+      date: "Apr - Jun 2025",
+      problem: "SAM Fuel Company in Saudi Arabia needed a comprehensive HR and operations management system to efficiently manage 28+ fuel stations and their multilingual workforce (English, Arabic, Bengali speakers).",
+      solution: "Developed a Node.js backend API with complete multilingual support, featuring employee management, attendance tracking, automated document expiry monitoring with cron jobs, salary management, and role-based access for admins and station managers.",
+      result: "Successfully delivered a scalable HR management system that reduces manual workloads, ensures compliance, and improves operational transparency while supporting SAM Fuel Company's diverse multilingual workforce across all stations.",
+      tech: ["Node.js", "Express.js", "MongoDB", "JWT", "Cron Jobs", "Multilingual API"],
+      gradient: "from-green-500 to-teal-500",
+      icon: Database,
+      image: "/lovable-uploads/PowerLineGas.png",
+      additionalImage: "/lovable-uploads/58a853b6-e5fa-4bd4-af5b-90bbee150347.png",
+      anotherImage: "/lovable-uploads/2c60e4e3-6cb5-4c48-8f4d-9f368898f012.png"
     },
     {
       title: "Herfa App Backend API",
@@ -63,32 +71,37 @@ const Projects = () => {
       additionalImage: "/lovable-uploads/3cbe8958-9b1f-4abb-aa7d-a9a37c782421.png"
     },
     {
-      title: "Powerline Gas API Backend",
-      date: "Apr - Jun 2025",
-      problem: "SAM Fuel Company in Saudi Arabia needed a comprehensive HR and operations management system to efficiently manage 28+ fuel stations and their multilingual workforce (English, Arabic, Bengali speakers).",
-      solution: "Developed a Node.js backend API with complete multilingual support, featuring employee management, attendance tracking, automated document expiry monitoring with cron jobs, salary management, and role-based access for admins and station managers.",
-      result: "Successfully delivered a scalable HR management system that reduces manual workloads, ensures compliance, and improves operational transparency while supporting SAM Fuel Company's diverse multilingual workforce across all stations.",
-      tech: ["Node.js", "Express.js", "MongoDB", "JWT", "Cron Jobs", "Multilingual API"],
-      gradient: "from-green-500 to-teal-500",
-      icon: Database,
-      image: "/lovable-uploads/PowerLineGas.png",
-      additionalImage: "/lovable-uploads/58a853b6-e5fa-4bd4-af5b-90bbee150347.png",
-      anotherImage: "/lovable-uploads/2c60e4e3-6cb5-4c48-8f4d-9f368898f012.png"
-
+      title: "RiedBerg Residential App Backend",
+      date: "Feb 2025",
+      problem: "A residential compound needed a comprehensive management system for admin, worker, and user interfaces with social networking and maintenance reporting.",
+      solution: "Created a backend for a residential management app with admin, worker, and user interfaces, integrating social networking and maintenance reporting capabilities.",
+      result: "Built a scalable and efficient residential management system that streamlines compound operations and enhances resident communication.",
+      tech: ["Node.js", "Express.js", "MongoDB", "Multi-role System", "Social Features"],
+      gradient: "from-orange-500 to-red-500",
+      icon: Code,
+      image: null
     },
     {
-      title: "Noorex Ecommerce App Backend",
-      date: "Jul - Sep 2025",
-      problem: "Noorex needed a comprehensive ecommerce backend solution to handle product management, user authentication, order processing, and inventory management for their online retail platform.",
-      solution: "Developed using Node.js, Express.js, and MongoDB to create a scalable ecommerce backend with secure user authentication, efficient product catalog management, order processing workflows, and inventory tracking systems.",
-      result: "Successfully delivered a robust ecommerce backend that enables seamless online shopping experiences with secure transactions, real-time inventory updates, and comprehensive order management capabilities.",
+      title: "Chat App Backend API",
+      date: "Jan 2025",
+      problem: "Needed to build a WhatsApp-like real-time messaging system that could handle single chats, group chats, and channels with file sharing capabilities and instant notifications.",
+      solution: "Built using Node.js and Socket.io for real-time messaging with MongoDB for scalable data storage. Implemented secure JWT authentication, file upload with Multer, and efficient Socket.io rooms for group management.",
+      result: "Created a comprehensive real-time messaging backend with single chat, group chat, and channel features, supporting file sharing, message editing/deletion, and instant notifications with read receipts.",
+      tech: ["Node.js", "Express.js", "MongoDB", "Socket.io", "JWT", "Multer"],
+      gradient: "from-green-500 to-emerald-500",
+      icon: MessageSquare,
+      image: null
+    },
+    {
+      title: "Ecommerce App - Backend API",
+      date: "2023",
+      problem: "Built a scalable backend for an eCommerce platform that needed to handle user authentication, product management, and order processing with robust security measures.",
+      solution: "Developed using Node.js, Express.js, and MongoDB with comprehensive features including user authentication, product management, and order processing systems.",
+      result: "Successfully created a fully functional eCommerce backend with secure authentication, efficient product catalog management, and streamlined order processing.",
       tech: ["Node.js", "Express.js", "MongoDB", "RESTful API", "Authentication"],
-      gradient: "from-indigo-500 to-purple-500",
+      gradient: "from-blue-500 to-cyan-500",
       icon: Globe,
-      image: "/lovable-uploads/a938314a-5817-4c7e-a0f7-14efbc9c8af5.png",
-      additionalImage: "/lovable-uploads/8f84dfff-8b71-4d8f-ada8-a419bd53e149.png",
-      anotherImage: "/lovable-uploads/clientsNoorex.png"
-
+      image: null
     }
   ];
 
@@ -127,30 +140,86 @@ const Projects = () => {
                     {/* Project Image */}
                     {project.image && (
                       <div className="lg:col-span-4 space-y-4">
-                        <div className="relative aspect-square rounded-xl overflow-hidden bg-muted/20">
-                          <img 
-                            src={project.image} 
-                            alt={`${project.title} logo`}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                          />
-                        </div>
+                        <Dialog>
+                          <DialogTrigger asChild>
+                            <div className="relative aspect-square rounded-xl overflow-hidden bg-muted/20 cursor-pointer hover:opacity-90 transition-opacity">
+                              <img 
+                                src={project.image} 
+                                alt={`${project.title} logo`}
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                              />
+                            </div>
+                          </DialogTrigger>
+                          <DialogContent className="max-w-5xl w-full p-0 bg-transparent border-0">
+                            <img 
+                              src={project.image} 
+                              alt={`${project.title} logo`}
+                              className="w-full h-auto rounded-lg"
+                            />
+                          </DialogContent>
+                        </Dialog>
+
                         {project.additionalImage && (
-                          <div className="relative aspect-video rounded-xl overflow-hidden bg-muted/20">
-                            <img 
-                              src={project.additionalImage} 
-                              alt={`${project.title} interface`}
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            />
-                          </div>
+                          <Dialog>
+                            <DialogTrigger asChild>
+                              <div className="relative aspect-video rounded-xl overflow-hidden bg-muted/20 cursor-pointer hover:opacity-90 transition-opacity">
+                                <img 
+                                  src={project.additionalImage} 
+                                  alt={`${project.title} interface`}
+                                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                />
+                              </div>
+                            </DialogTrigger>
+                            <DialogContent className="max-w-5xl w-full p-0 bg-transparent border-0">
+                              <img 
+                                src={project.additionalImage} 
+                                alt={`${project.title} interface`}
+                                className="w-full h-auto rounded-lg"
+                              />
+                            </DialogContent>
+                          </Dialog>
                         )}
-                                            {project.anotherImage && (
-                          <div className="relative aspect-video rounded-xl overflow-hidden bg-muted/20">
-                            <img 
-                              src={project.anotherImage} 
-                              alt={`${project.title} interface`}
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            />
-                          </div>
+
+                        {project.anotherImage && (
+                          <Dialog>
+                            <DialogTrigger asChild>
+                              <div className="relative aspect-video rounded-xl overflow-hidden bg-muted/20 cursor-pointer hover:opacity-90 transition-opacity">
+                                <img 
+                                  src={project.anotherImage} 
+                                  alt={`${project.title} interface`}
+                                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                />
+                              </div>
+                            </DialogTrigger>
+                            <DialogContent className="max-w-5xl w-full p-0 bg-transparent border-0">
+                              <img 
+                                src={project.anotherImage} 
+                                alt={`${project.title} interface`}
+                                className="w-full h-auto rounded-lg"
+                              />
+                            </DialogContent>
+                          </Dialog>
+                        )}
+
+                        {project.fourthImage && (
+                          <Dialog>
+                            <DialogTrigger asChild>
+                              <div className="relative aspect-video rounded-xl overflow-hidden bg-muted/20 cursor-pointer hover:opacity-90 transition-opacity">
+                                <img 
+                                  src={project.fourthImage} 
+                                  alt={`${project.title} orders management`}
+                                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                />
+                              </div>
+                            </DialogTrigger>
+                            <DialogContent className="max-w-5xl w-full p-0 bg-transparent border-0">
+                              <img 
+                                src={project.fourthImage} 
+                                alt={`${project.title} orders management`}
+                                className="w-full h-auto rounded-lg"
+                              />
+                            </DialogContent>
+                          </Dialog>
                         )}
                       </div>
                     )}
