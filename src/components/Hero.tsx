@@ -29,7 +29,7 @@ const Hero = () => {
           <div className="w-40 h-40 mx-auto mb-8 rounded-full bg-gradient-to-r from-primary via-primary/80 to-primary p-1 shadow-2xl transform hover:scale-110 transition-all duration-500 animate-fade-in">
             <div className="w-full h-full rounded-full overflow-hidden bg-gradient-to-r from-primary to-primary/80">
               <img
-                src="/lovable-uploads/2af46610-7eb5-4d7f-8719-5ba38ad97027.png"
+                src="/lovable-uploads/IMG_68101.JPG"
                 alt="Abanoub Mamdouh"
                 className="w-full h-full object-cover rounded-full"
               />
