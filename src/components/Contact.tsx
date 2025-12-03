@@ -1,5 +1,7 @@
-
 import { Github, Briefcase, Contact as ContactIcon, Mail, Linkedin, Phone } from "lucide-react";
+import { motion } from "framer-motion";
+import AnimatedSection from "./animations/AnimatedSection";
+import GlassCard from "./animations/GlassCard";
 
 const Contact = () => {
   const contactMethods = [
@@ -17,7 +19,7 @@ const Contact = () => {
       description: "Let's connect professionally",
       contact: "LinkedIn Profile",
       href: "https://www.linkedin.com/in/abanoubmamdouh/",
-      gradient: "from-blue-600 to-blue-700"
+      gradient: "from-blue-600 to-indigo-600"
     },
     {
       icon: Phone,
@@ -29,102 +31,123 @@ const Contact = () => {
     }
   ];
 
+  const features = [
+    { icon: Briefcase, title: "Available for Projects", desc: "Backend development, APIs, and consulting opportunities" },
+    { icon: ContactIcon, title: "Quick Response", desc: "Based in Egypt, Cairo - I typically respond within 24 hours" },
+    { icon: Github, title: "Problem Solver", desc: "Collaborative approach to solving complex challenges" }
+  ];
+
   return (
-    <section id="contact" className="py-24 bg-gradient-to-br from-background via-primary/5 to-background relative overflow-hidden">
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-5 dark:opacity-10">
-        <div className="w-full h-full bg-repeat" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='currentColor' fill-opacity='0.4'%3E%3Cpath d='M30 30c0-16.569 13.431-30 30-30v30H30z'/%3E%3C/g%3E%3C/svg%3E")`
-        }}></div>
-      </div>
+    <section id="contact" className="py-24 bg-gradient-mesh relative overflow-hidden">
+      {/* Animated background orbs */}
+      <motion.div 
+        className="absolute top-20 right-20 w-64 h-64 rounded-full bg-primary/10 blur-3xl"
+        animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.5, 0.3] }}
+        transition={{ duration: 6, repeat: Infinity }}
+      />
+      <motion.div 
+        className="absolute bottom-20 left-20 w-64 h-64 rounded-full bg-accent/10 blur-3xl"
+        animate={{ scale: [1.3, 1, 1.3], opacity: [0.5, 0.3, 0.5] }}
+        transition={{ duration: 8, repeat: Infinity }}
+      />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
+          <AnimatedSection className="text-center mb-20">
+            <h2 className="text-5xl md:text-6xl font-bold mb-8 gradient-text">
               Let's Build Something Amazing
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-primary to-primary/60 mx-auto rounded-full mb-8"></div>
+            <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full mb-8"></div>
             <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
               Ready to bring your backend project to life? I'm Abanoub Mamdouh, and I'd love to discuss how my expertise 
               in Node.js development can help transform your ideas into scalable applications.
             </p>
-          </div>
+          </AnimatedSection>
           
-          {/* Enhanced feature cards */}
+          {/* Feature cards */}
           <div className="grid md:grid-cols-3 gap-8 mb-16">
-            <div className="group bg-card/50 backdrop-blur-sm rounded-2xl p-8 hover:bg-card transition-all duration-500 transform hover:-translate-y-2 border border-border">
-              <div className="w-20 h-20 bg-gradient-to-r from-primary to-primary/80 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Briefcase size={28} className="text-primary-foreground" />
-              </div>
-              <h3 className="text-xl font-semibold mb-4 text-center text-foreground">Available for Projects</h3>
-              <p className="text-muted-foreground text-center leading-relaxed">Backend development, APIs, and consulting opportunities</p>
-            </div>
-            
-            <div className="group bg-card/50 backdrop-blur-sm rounded-2xl p-8 hover:bg-card transition-all duration-500 transform hover:-translate-y-2 border border-border">
-              <div className="w-20 h-20 bg-gradient-to-r from-primary to-primary/80 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <ContactIcon size={28} className="text-primary-foreground" />
-              </div>
-              <h3 className="text-xl font-semibold mb-4 text-center text-foreground">Quick Response</h3>
-              <p className="text-muted-foreground text-center leading-relaxed">Based in Egypt, Cairo - I typically respond within 24 hours</p>
-            </div>
-            
-            <div className="group bg-card/50 backdrop-blur-sm rounded-2xl p-8 hover:bg-card transition-all duration-500 transform hover:-translate-y-2 border border-border">
-              <div className="w-20 h-20 bg-gradient-to-r from-primary to-primary/80 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Github size={28} className="text-primary-foreground" />
-              </div>
-              <h3 className="text-xl font-semibold mb-4 text-center text-foreground">Problem Solver</h3>
-              <p className="text-muted-foreground text-center leading-relaxed">Collaborative approach to solving complex challenges</p>
-            </div>
+            {features.map((feature, index) => (
+              <AnimatedSection key={index} delay={index * 0.1}>
+                <GlassCard className="p-8 rounded-2xl text-center h-full">
+                  <motion.div 
+                    className="w-20 h-20 bg-gradient-to-r from-primary to-accent rounded-2xl flex items-center justify-center mx-auto mb-6"
+                    whileHover={{ rotate: 360, scale: 1.1 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <feature.icon size={28} className="text-primary-foreground" />
+                  </motion.div>
+                  <h3 className="text-xl font-semibold mb-4 text-foreground">{feature.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{feature.desc}</p>
+                </GlassCard>
+              </AnimatedSection>
+            ))}
           </div>
 
           {/* Contact methods */}
           <div className="grid md:grid-cols-3 gap-6 mb-16">
             {contactMethods.map((method, index) => (
-              <a
-                key={index}
-                href={method.href}
-                className="group bg-card/50 backdrop-blur-sm rounded-2xl p-6 hover:bg-card transition-all duration-300 transform hover:-translate-y-1 border border-border hover:border-primary/50"
-              >
-                <div className={`w-12 h-12 bg-gradient-to-r ${method.gradient} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                  <method.icon size={20} className="text-white" />
-                </div>
-                <h4 className="text-lg font-semibold text-foreground mb-2">{method.title}</h4>
-                <p className="text-muted-foreground text-sm mb-2">{method.description}</p>
-                <p className="text-primary font-medium">{method.contact}</p>
-              </a>
+              <AnimatedSection key={index} delay={0.3 + index * 0.1}>
+                <motion.a
+                  href={method.href}
+                  whileHover={{ scale: 1.02, y: -4 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="block"
+                >
+                  <GlassCard className="p-6 rounded-2xl h-full">
+                    <motion.div 
+                      className={`w-12 h-12 bg-gradient-to-r ${method.gradient} rounded-xl flex items-center justify-center mb-4`}
+                      whileHover={{ rotate: 12 }}
+                    >
+                      <method.icon size={20} className="text-white" />
+                    </motion.div>
+                    <h4 className="text-lg font-semibold text-foreground mb-2">{method.title}</h4>
+                    <p className="text-muted-foreground text-sm mb-2">{method.description}</p>
+                    <p className="text-primary font-medium">{method.contact}</p>
+                  </GlassCard>
+                </motion.a>
+              </AnimatedSection>
             ))}
           </div>
           
-          {/* Main CTA buttons */}
-          <div className="text-center space-y-8">
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <a 
-                href="https://wa.me/201029009237" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center px-10 py-5 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-xl shadow-lg hover:shadow-primary/25 transform hover:-translate-y-2 transition-all duration-300"
-              >
-                <ContactIcon className="mr-3 group-hover:rotate-12 transition-transform duration-300" size={22} />
-                Get In Touch
-              </a>
-              <a 
-                href="https://github.com/abanoubmamdouhhanna" 
-                className="group inline-flex items-center px-10 py-5 border-2 border-primary hover:bg-primary hover:text-primary-foreground text-primary font-semibold rounded-xl shadow-lg hover:shadow-primary/25 transform hover:-translate-y-2 transition-all duration-300"
-              >
-                <Github className="mr-3 group-hover:rotate-12 transition-transform duration-300" size={22} />
-                View GitHub
-              </a>
-            </div>
-            
-            <div className="flex justify-center">
-              <div className="flex space-x-2">
-                <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                <div className="w-2 h-2 bg-primary/70 rounded-full animate-pulse animation-delay-200"></div>
-                <div className="w-2 h-2 bg-primary rounded-full animate-pulse animation-delay-400"></div>
+          {/* CTA buttons */}
+          <AnimatedSection delay={0.5}>
+            <div className="text-center space-y-8">
+              <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                <motion.a 
+                  href="https://wa.me/201029009237" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center px-10 py-5 bg-primary text-primary-foreground font-semibold rounded-2xl glow-primary"
+                  whileHover={{ scale: 1.05, y: -4 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <ContactIcon className="mr-3 group-hover:rotate-12 transition-transform duration-300" size={22} />
+                  Get In Touch
+                </motion.a>
+                <motion.a 
+                  href="https://github.com/abanoubmamdouhhanna" 
+                  className="group inline-flex items-center px-10 py-5 glass-card-strong text-foreground font-semibold rounded-2xl"
+                  whileHover={{ scale: 1.05, y: -4 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <Github className="mr-3 group-hover:rotate-12 transition-transform duration-300" size={22} />
+                  View GitHub
+                </motion.a>
               </div>
+              
+              <motion.div 
+                className="flex justify-center"
+                animate={{ y: [0, -5, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                <div className="flex space-x-2">
+                  <div className="w-2 h-2 bg-primary rounded-full"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
+                  <div className="w-2 h-2 bg-primary rounded-full"></div>
+                </div>
+              </motion.div>
             </div>
-          </div>
+          </AnimatedSection>
         </div>
       </div>
     </section>
