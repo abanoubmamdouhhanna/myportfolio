@@ -125,7 +125,7 @@ const Contact = () => {
                   Get In Touch
                 </motion.a>
                 <motion.a 
-                  href="https://github.com/abanoubmamdouhhanna" 
+                  href="https://github.com/abanoubmamdou7" 
                   className="group inline-flex items-center px-10 py-5 glass-card-strong text-foreground font-semibold rounded-2xl"
                   whileHover={{ scale: 1.05, y: -4 }}
                   whileTap={{ scale: 0.98 }}
